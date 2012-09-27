@@ -28,29 +28,29 @@ augroup perforce
   autocmd BufRead * call <SID>P4GetFileStatus()
 
   " Keyboard shortcuts - default <Leader> is \
-  map <silent> <Leader><Leader> :echo <SID>P4GetInfo()<CR>
-  map <silent> <Leader>a :echo <SID>P4AnnotateFile()<CR>
+  "map <silent> <Leader><Leader> :echo <SID>P4GetInfo()<CR>
+  "map <silent> <Leader>a :echo <SID>P4AnnotateFile()<CR>
   map <silent> <Leader>e :call <SID>P4OpenFileForEdit()<CR>
-  map <silent> <Leader>r :call <SID>P4RevertFile()<CR>
-  map <silent> <Leader>i :echo <SID>P4GetFileStatus()<CR>
-  map <silent> <Leader>s :echo <SID>P4GetFileStatus()<CR> " For backward compatibility
-  map <silent> <Leader>y :echo <SID>P4SyncFile()<CR>
-  map <silent> <Leader>d :echo <SID>P4DiffFile()<CR>
-  map <silent> <Leader>u :echo <SID>P4UDiffFile()<CR>
-  map <silent> <Leader>z :echo <SID>P4VDiffFile()<CR>
-  map <silent> <Leader>v :echo <SID>P4VersionsFile()<CR>
-  map <silent> <Leader>p :echo <SID>P4PrintFile()<CR>
-  map <silent> <Leader>h :echo <SID>P4Help()<CR>
+  "map <silent> <Leader>r :call <SID>P4RevertFile()<CR>
+  "map <silent> <Leader>i :echo <SID>P4GetFileStatus()<CR>
+  "map <silent> <Leader>s :echo <SID>P4GetFileStatus()<CR> " For backward compatibility
+  "map <silent> <Leader>y :echo <SID>P4SyncFile()<CR>
+  "map <silent> <Leader>d :echo <SID>P4DiffFile()<CR>
+  "map <silent> <Leader>u :echo <SID>P4UDiffFile()<CR>
+  "map <silent> <Leader>z :echo <SID>P4VDiffFile()<CR>
+  "map <silent> <Leader>v :echo <SID>P4VersionsFile()<CR>
+  "map <silent> <Leader>p :echo <SID>P4PrintFile()<CR>
+  "map <silent> <Leader>h :echo <SID>P4Help()<CR>
   map <silent> <Leader>l :call <SID>P4Login()<CR>
-  map <silent> <Leader>x :call <SID>P4OpenFileForDeletion()<CR>
-  map <silent> <Leader>C :call <SID>P4CreateChangelist()<CR>
-  map <silent> <Leader>D :echo <SID>P4DiffFiles()<CR>
-  map <silent> <Leader>U :echo <SID>P4UDiffFiles()<CR>
-  map <silent> <Leader>L :echo <SID>P4GetChangelists(1)<CR>
-  map <silent> <Leader>I :echo <SID>P4GetChangelistInfo()<CR>
-  map <silent> <Leader>F :echo <SID>P4GetFiles()<CR>
-  map <silent> <Leader>X :call <SID>P4DeleteChangelist()<CR>
-  map <silent> <Leader>S :call <SID>P4SubmitChangelist()<CR>
+  "map <silent> <Leader>x :call <SID>P4OpenFileForDeletion()<CR>
+  "map <silent> <Leader>C :call <SID>P4CreateChangelist()<CR>
+  "map <silent> <Leader>D :echo <SID>P4DiffFiles()<CR>
+  "map <silent> <Leader>U :echo <SID>P4UDiffFiles()<CR>
+  "map <silent> <Leader>L :echo <SID>P4GetChangelists(1)<CR>
+  "map <silent> <Leader>I :echo <SID>P4GetChangelistInfo()<CR>
+  "map <silent> <Leader>F :echo <SID>P4GetFiles()<CR>
+  "map <silent> <Leader>X :call <SID>P4DeleteChangelist()<CR>
+  "map <silent> <Leader>S :call <SID>P4SubmitChangelist()<CR>
 
   " user-defined commands must start with a capital letter and should not include digits
   command -nargs=1 Perforce :call <SID>P4ShellCommandAndEditCurrentBuffer( <f-args> )
