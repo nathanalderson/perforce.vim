@@ -335,8 +335,7 @@ function s:P4OpenFileForEdit()
     let listnum = ""
     let listnum = s:P4GetChangelist( "Current changelists:\n" . s:P4GetChangelists(0) . "\nEnter changelist number: ", b:changelist )
     if listnum == ""
-        echomsg "No changelist specified. Edit cancelled."
-        return
+        let listnum = "default"
     endif
     call s:P4ShellCommandCurrentBuffer( action . " -c " . listnum )
     if v:errmsg != ""
