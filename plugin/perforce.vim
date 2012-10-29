@@ -552,9 +552,9 @@ endfunction
 function s:P4GetChangelists(sAll)
     let opt = ''
     if (a:sAll == 0)
-        let opt = ' -c ' . $P4CLIENT
+        let opt = ' -c ' . s:P4GetEnv('P4CLIENT')
     endif
-    let cmd = "changes -L -s pending -u " . $USER . opt
+    let cmd = "changes -L -s pending -u " . s:P4GetEnv('P4USER') . opt
     let filestatus = s:P4ShellCommand(cmd)
     if v:errmsg != ""
         echoerr "Unable to get change lists. " . v:errmsg
@@ -708,6 +708,15 @@ endfunction
 function s:P4GetInfo()
     let foo = s:P4ShellCommand("info")
     return foo
+endfunction
+
+"----------------------------------------------------------------------------
+" Get perforce environment variable
+"----------------------------------------------------------------------------
+function s:P4GetEnv(sVarname)
+    let output = s:P4ShellCommand("set " . a:sVarname)
+    let val = matchlist(output, a:sVarname . '=\(.*\)\( (set)\)')[1]
+    return val
 endfunction
 
 "----------------------------------------------------------------------------
