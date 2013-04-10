@@ -787,7 +787,7 @@ endfunction
 "----------------------------------------------------------------------------
 function! s:P4GetEnv(sVarname)
     let output = s:P4ShellCommand("set " . a:sVarname)
-    let val = matchlist(output, a:sVarname . '=\(.*\)\( (set)\)')[1]
+    let val = matchlist(output, a:sVarname . '\v\=([a-zA-Z0-9_-]+)')[1]
     return val
 endfunction
 
