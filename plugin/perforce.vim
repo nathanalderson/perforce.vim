@@ -149,13 +149,10 @@ function! s:P4ShellCommand( sCmd )
         if match( sReturn, "Perforce password (P4PASSWD) invalid or unset\." ) != -1
             let v:errmsg = "Not logged in to Perforce."
         elseif v:shell_error != 0
-            echoerr "Error with command: " . sCommandLine
             let v:errmsg = sReturn
         else
             return sReturn
         endif
-    else
-        echoerr "Error with command: " . sCommandLine
     endif
 endfunction
 
