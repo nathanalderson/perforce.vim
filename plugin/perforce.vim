@@ -149,10 +149,13 @@ function! s:P4ShellCommand( sCmd )
         if match( sReturn, "Perforce password (P4PASSWD) invalid or unset\." ) != -1
             let v:errmsg = "Not logged in to Perforce."
         elseif v:shell_error != 0
+            echoerr "Error with command: " . sCommandLine
             let v:errmsg = sReturn
         else
             return sReturn
         endif
+    else
+        echoerr "Error with command: " . sCommandLine
     endif
 endfunction
 
@@ -558,7 +561,7 @@ endfunction
 " sAll: Show changelists for all clients. Otherwise, only the pending
 "   changelists in the current client is shown.
 "----------------------------------------------------------------------------
-function! s:PI4GetChangelists(sAll)
+function! s:P4GetChangelists(sAll)
     let opt = ''
     if (a:sAll == 0)
         let opt = ' -c' . b:p4workspace
@@ -597,9 +600,10 @@ endfunction
 "----------------------------------------------------------------------------
 function! s:P4GetChangelist(sPrompt, sDefault)
     let listnum = input( a:sPrompt, a:sDefault)
-    if listnum != ""
-        let b:changelist = listnum
+    if match(listnum, '\S') == -1
+        let listnum = "default"
     endif
+    let b:changelist = listnum
     return listnum
 endfunction
 
