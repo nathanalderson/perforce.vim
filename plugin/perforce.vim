@@ -100,20 +100,20 @@ function! s:P4InitialBufferVariables()
     let b:changelist=""
 endfunction
 
-if !exists( "p4ruler" )
-    let p4SetRuler = 1
-endif
-
-if( strlen( &rulerformat ) == 0 ) && ( p4SetRuler == 1 )
-    set rulerformat=%60(%=%{P4RulerStatus()}\ %4l,%-3c\ %3p%%%)
-endif
-
 "Basic check for p4-enablement
 if executable( "p4.exe" ) || executable( "p4" )
     let s:PerforceExecutable="p4" 
 else
     augroup! perforce
 endif 
+
+if !exists( "p4ruler" ) && exists( "s:PerforceExecutable" )
+    let p4SetRuler = 1
+endif
+
+if( strlen( &rulerformat ) == 0 ) && exists( "p4SetRuler" )
+    set rulerformat=%60(%=%{P4RulerStatus()}\ %4l,%-3c\ %3p%%%)
+endif
 
 "----------------------------------------------------------------------------
 " Minimal execution of a p4 command, followed by re-opening
