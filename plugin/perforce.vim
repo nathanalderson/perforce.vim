@@ -25,7 +25,7 @@ augroup perforce
     " events
     autocmd FileChangedRO * nested call <SID>P4OpenFileForEditWithPrompt()
     autocmd BufRead * call <SID>P4InitialBufferVariables()
-    autocmd BufRead * call <SID>P4GetFileStatus()
+    " autocmd BufRead * call <SID>P4GetFileStatus()
 
     " Keyboard shortcuts - default <Leader> is \
     "map <silent> <Leader><Leader> :echo <SID>P4GetInfo()<CR>
